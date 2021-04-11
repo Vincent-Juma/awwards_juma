@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="rating-page above"
+    style="background-image: url({{project.image.url}});height: 100vh;background-attachment: fixed;">
+    <div id="overlay">
+        <div class="container-fluid">
+            <div class="container spinners">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box">
+                            <div class="chart" data-percent="{{content_percent}}">Content {{ content_average }}</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box">
+                            <div class="chart" data-percent="{{ usability_percent }}">Usability {{ usability_average }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box">
+                            <div class="chart" data-percent="{{ design_percent }}">Design {{ design_average }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div class="container-fluid">
+    <h1 class="project-details-heading">Project Details</h1>
+    <hr>
+    <h2 class="project-details-heading">Project Title</h2>
+    <p>{{ project.title }} {{ design_mean }}</p><br>
+
+    <h2 class="project-details-heading">Project Details</h2>
+    <p>{{ project.description }}</p><br>
+
+    <h2 class="project-details-heading">Visit The Site</h2>
+    <a href="{{project.link}}">Visit Site</a><br>
+
+    <h2 class="project-details-heading">Rate this site</h2>
+    <div class="row">
+        <!-- <div class="col-md-4"></div> -->
+        <div class="col-md-4">
+            <h2 class="project-details-heading">Rate</h2>
+            <hr>
+            <form action="" method="POST" enctype="multipart/form-data" id="ratingform">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="hidden" value="{{ project.id }}" id="project_id">
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Submit Rating</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <h2 class="project-details-heading">Ratings</h2>
+            <hr>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Design</th>
+                        <th scope="col">Usability</th>
+                        <th scope="col">Content</th>
+                    </tr>
+                </thead>
+                <tbody class="t-data">
+                    <tr>
+                        <th scope="row">Average</th>
+                        <td>All</td>
+                        <td>{{ design_average }}</td>
+                        <td>{{ usability_average }}</td>
+                        <td>{{ content_average }}</td>
+                    </tr>
+                    {% if project_rating %}
+                    {% for rating in project_rating %}
+                    <tr class="rate{{rating.user.id}}">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td class="t-user"><img src="{{ rating.user.profile.profile_pic.url }}" alt="profile picture"
+                                class="rounded-circle custom-display border border-danger">{{ rating.user.username }}
+                        </td>
+                        <td class="t-design">{{ rating.design }}</td>
+                        <td class="t-usability">{{ rating.usability }}</td>
+                        <td class="t-content">{{ rating.content }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

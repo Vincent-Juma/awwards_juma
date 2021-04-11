@@ -1,0 +1,46 @@
+{% load bootstrap4 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% block styles %}
+        {% bootstrap_css %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Trochut&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    {% if title %}
+    <title>Awwwards-clone - {{ title }}</title>
+    {% else %}
+    <title>Awwwards-clone</title>
+    {% endif %}
+
+</head>
+<body>
+    
+    {% include 'main/navbar.html' %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    {% block content %}
+
+    {% endblock %}
+
+    {% block scripts %}
+        {% bootstrap_javascript jquery='full' %}
+        <script src="{% static 'scripts/jquery.easypiechart.js' %}"></script>
+        <script src="{% static 'scripts/rateproject.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-md-3">
+    <h1 class="upload-form-heading">How To Upload</h1>
+    <ol>
+        <li>Title:Your project Name</li>
+        <li>Description:A description about your project you can also include technologys used here</li>
+        <li>Link: Full link to your site e.g http://(site).com</li>
+        <li>Image:Upload screenshot of the homepage</li>
+    </ol>
+</div>
+<div class="col-md-6">
+<h1 class="upload-form-heading">Upload Project</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Upload Image</button>
+    </div>
+</form>
+</div>
+
+<div class="col-md-3"></div>
+</div>
+</div>
+{% endblock %}

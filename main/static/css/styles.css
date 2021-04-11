@@ -1,0 +1,90 @@
+.landing-page {
+    background-image: url(../assets/BeFunky-photo\ \(1\).png);
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.upload-form-heading,.landing-page-heading,.project-details-heading,.my-profile-heading {
+    font-family: 'Trochut', cursive;
+}
+
+body { 
+    padding-top: 60px; 
+}
+
+.landing-page-heading {
+    color: white;
+    padding-top: 300px;
+    text-shadow: 1px 1px 12px gold;
+}
+
+.project-row {
+    padding-top: 30px;
+    background:white;
+}
+.bg-projects {
+    background-attachment: fixed;
+    background-size: cover;
+    background-image: url(../assets/awwardsbg.jpeg);
+}
+
+.custom-display {
+    height: 50px;
+    width: 50px;
+    padding: 3px;
+}
+
+.project-owner-display {
+    display:flex;
+    padding-bottom: 5px;
+}
+
+.card-body,.card-footer {
+    background-color: black;
+    color: white;
+}
+
+#button-rate {
+    border-radius: 20px;
+    background-color: grey;
+}
+
+/******************************************** 
+
+Start of top section for project rating view 
+
+**********************************************/
+.spinners{
+    width: 1000px;
+    padding-top:250px;
+    padding-left:250px;
+}
+
+.spinners .box {
+    width: 25%;
+    float: left;
+}
+
+.spinners .box .chart {
+    position:relative;
+    width: 110px;
+    height: 110px;
+    margin:0 auto;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 12px gold;
+    font-size: 30px;
+}
+
+/* .spinners .box canvas {
+    position: absolute;
+    top: -3px;
+    left: 0;
+} */
+
+/******** overlay for rating section *********/
+#overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+}

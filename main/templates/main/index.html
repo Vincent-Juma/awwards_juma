@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="landing-page">
+    <h1 class="landing-page-heading text-center">awwwards.</h1>
+</div>
+<div class="bg-projects">
+<div class="container" >
+<div class="row project-row">
+    {% if projects %}
+
+        {% for project in projects %}
+        <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ project.image.url }}" class="card-img-top" alt="Project image">
+            <div class="card-body">
+                <div class="project-owner-display">
+                    <img src="{{ project.user.profile.profile_pic.url }}" alt="profile picture" class="rounded-circle custom-display border border-danger">
+                    <p class="ml-2">Uploaded by: {{ project.user.username }}</p>
+                </div>
+                <p class="card-text">Project Name: {{ project.title }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'rate_project' project.id %}"><button id="button-rate">View & Rate This Site</button></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+    {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}

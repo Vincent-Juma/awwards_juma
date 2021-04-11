@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Dev Center</h1>
+    </div>
+    <h1>Use Our Apis</h1>
+    <ol>
+        <li>
+            <p>All projects endpoint:
+            <a href="{% url 'all_projects_api' %}">https://not-awwwards.herokuapp.com/api/projects</a>
+            </p>
+            <p>This api will query the database for all projects submitted by users</p>
+        </li>
+        <li>
+            <p>All profiles endpoint:
+            <a href="{% url 'all_profiles_api' %}">https://not-awwwards.herokuapp.com/api/profiles</a>
+            </p> 
+            <p>This api will query the database for all peoples profile</p>
+        </li>
+    </ol>
+</div>
+{% endblock %}

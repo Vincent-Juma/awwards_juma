@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="media">   
+            <img src="{{ current_user.profile.profile_pic.url }}" alt="profile image" class="rounded-circle profile-img">
+            <div class="media-body">
+                <h2 class="account-heading ml-4">Username: {{ user.username }}</h2>
+                <p class="text-secondary ml-4"> Email: {{ user.email }}</p>
+                <p class="text-secondary ml-4">Bio: {{ user.profile.bio }}</p>
+            </div>
+            <a href="{% url 'profile' %}" class="btn btn-outline-info">Edit Profile</a>
+        </div>
+        <hr>
+        <h2 class="text-center my-profile-heading">My Projects</h2>
+        <div class="row">
+            {% for project in current_user.project_set.all %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ project.image.url }}" class="card-img-top" alt="Project image">
+                        <div class="card-body">
+                            <div class="project-owner-display">
+                                <img src="{{ project.user.profile.profile_pic.url }}" alt="profile picture" class="rounded-circle custom-display border border-danger">
+                                <p class="ml-2">Uploaded by: {{ project.user.username }}</p>
+                            </div>
+                            <p class="card-text">Project Name: {{ project.title }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'rate_project' project.id %}"><button id="button-rate">View & Rate This Site</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
