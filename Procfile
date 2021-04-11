@@ -1,1 +1,1 @@
-web: gunicorn awwwards_clone.wsgi --log-file -
+web: gunicorn awwards_juma.wsgi --log-file -
