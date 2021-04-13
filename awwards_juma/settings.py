@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['awwardsjumaproject.herokuapp.com', 'localhost']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-     'users.apps.UsersConfig',
+    'users.apps.UsersConfig',
     'main.apps.MainConfig',
     'crispy_forms',
     'rest_framework',
