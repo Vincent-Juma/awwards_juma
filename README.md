@@ -28,10 +28,6 @@ A step by step series of examples that tell you how to get a development env run
 ```
 python3.6 -m venv --without-pip virtual
 ```
-
-And activate it
-
-```
 source virtual/bin/activate
 ```
 1. install the latest version of pip
@@ -105,7 +101,7 @@ View the following [document](https://github.com/jakhax/deploying-django-to-hero
 
 ## Author
 
-* **Vincent Juma** - *Initial work* - [Vincent-Juma](https://github.com/Vincent-Juma)
+* **Vincent Juma** - *Initial work* - [Vincent-Juma](https://github.com/Vincent-Juma.git)
 
 ## License
 
